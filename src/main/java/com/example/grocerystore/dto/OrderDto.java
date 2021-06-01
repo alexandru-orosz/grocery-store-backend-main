@@ -16,5 +16,7 @@ public class OrderDto {
     private String orderTrackingNumber;
     private int totalQuantity;
     private BigDecimal totalPrice;
+    private String date;
+    private String status;
 
 }

@@ -34,6 +34,13 @@ public class CheckoutService {
         order.setShippingAddress(AddressFactory.generateAddress(purchase.getShippingAddress()));
 
         Customer customer = CustomerFactory.generateCustomer(purchase.getCustomer());
+
+        String email = customer.getEmail();
+        Customer customerFromDB = this.customerRepository.findByEmail(email);
+        if(customerFromDB != null) {
+            customer = customerFromDB;
+        }
+
         customer.add(order);
 
         customerRepository.save(customer);
